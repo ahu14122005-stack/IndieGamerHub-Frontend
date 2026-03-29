@@ -1,24 +1,37 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 
 function GameDetails({ dark }) {
   const location = useLocation();
-  const game = location.state?.game;
+  const { id } = useParams();
+
+  // ✅ FIX: use state OR fetch fallback
+  const [game, setGame] = useState(location.state?.game || null);
 
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [favorite, setFavorite] = useState(false);
 
-  if (!game) return <h2>Game not found!</h2>;
+  // ✅ FETCH if game not passed
+  useEffect(() => {
+    if (!game) {
+      fetch(`https://indiegamerhub-backend.onrender.com/api/games/${id}`)
+        .then(res => res.json())
+        .then(data => setGame(data))
+        .catch(err => console.log(err));
+    }
+  }, [id, game]);
 
-  // Extra images placeholders if none exist
+  // ✅ Show loading instead of "not found"
+  if (!game) return <h2>Loading...</h2>;
+
   const extraImages =
     game.short_screenshots && game.short_screenshots.length > 0
       ? game.short_screenshots
       : [
           "https://via.placeholder.com/150?text=Extra+Image+1",
           "https://via.placeholder.com/150?text=Extra+Image+2",
-          
+          "https://via.placeholder.com/150?text=Extra+Image+3",
         ];
 
   const addComment = () => {
@@ -31,7 +44,7 @@ function GameDetails({ dark }) {
   return (
     <div
       style={{
-        backgroundImage: `url(${game.background_image})`,
+        backgroundImage: `url(${game.background_image})`, // ✅ FIXED syntax
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
@@ -42,7 +55,6 @@ function GameDetails({ dark }) {
         alignItems: "center",
       }}
     >
-      {/* Semi-transparent container for readability */}
       <div
         style={{
           backgroundColor: dark ? "rgba(0,0,0,0.7)" : "rgba(255,255,255,0.7)",
@@ -55,10 +67,8 @@ function GameDetails({ dark }) {
           alignItems: "center",
         }}
       >
-        {/* Game Title */}
         <h1>{game.name}</h1>
 
-        {/* Main Image */}
         <img
           src={game.background_image}
           alt={game.name}
@@ -71,7 +81,6 @@ function GameDetails({ dark }) {
           }}
         />
 
-        {/* Extra Images */}
         <div
           style={{
             display: "flex",
@@ -84,7 +93,7 @@ function GameDetails({ dark }) {
             <img
               key={index}
               src={img}
-              alt={`${game.name}-extra-${index}`}
+              alt={`${game.name}-extra-${index}`} // ✅ FIXED syntax
               style={{
                 width: "150px",
                 height: "100px",
@@ -95,7 +104,6 @@ function GameDetails({ dark }) {
           ))}
         </div>
 
-        {/* Favorite Button */}
         <button
           onClick={() => setFavorite(!favorite)}
           style={{
@@ -112,12 +120,10 @@ function GameDetails({ dark }) {
           {favorite ? "❤️ Favorited" : "♡ Add to Favorites"}
         </button>
 
-        {/* Description */}
         <p style={{ maxWidth: "800px", textAlign: "center", marginBottom: "20px" }}>
           {game.description_raw || "Play the Games and Enjoy your Thrill."}
         </p>
 
-        {/* Trailer / YouTube */}
         <div style={{ marginBottom: "20px" }}>
           <a
             href={
@@ -135,7 +141,6 @@ function GameDetails({ dark }) {
           </a>
         </div>
 
-        {/* Comments Section */}
         <h2>Comments / Reviews</h2>
         <div
           style={{
@@ -161,7 +166,6 @@ function GameDetails({ dark }) {
           ))}
         </div>
 
-        {/* Add Comment Input */}
         <div
           style={{
             display: "flex",

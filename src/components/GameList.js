@@ -7,7 +7,7 @@ function GameList({ dark, setDark }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/games")
+    fetch("https://indiegamerhub-backend.onrender.com/api/games")
       .then((res) => res.json())
       .then((data) => setGames(data))
       .catch((err) => console.log(err));
