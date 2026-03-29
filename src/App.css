@@ -1,0 +1,94 @@
+/* Reset */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* 🌌 Gaming Gradient Background */
+.App {
+  min-height: 100vh;
+  text-align: center;
+  color: white;
+
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.9)
+    ),
+    url("https://images.unsplash.com/photo-1605902711622-cfb43c44367f");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Dark mode */
+.App.dark {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+/* Light mode */
+.App {
+  background: #ffffff;
+  color: #000000;
+}
+/* 🎮 Title Style */
+h1 {
+  font-size: 3rem;
+  margin-top: 20px;
+  text-shadow: 0 0 10px cyan, 0 0 20px blue;
+}
+
+/* 📦 Game Cards */
+div > div {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+}
+
+/* ✨ Hover Effect */
+div > div:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px cyan;
+}
+
+/* 🖼 Image */
+img {
+  border-radius: 10px;
+}
+
+/* 🌙 Button */
+button {
+  margin: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, cyan, blue);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(45deg, blue, purple);
+}
+
+/* 🔗 Navbar links */
+a {
+  color: cyan;
+  margin: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: white;
+}
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

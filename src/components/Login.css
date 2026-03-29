@@ -1,0 +1,46 @@
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #0f0f0f, #1a1a2e, #16213e);
+}
+
+.login-box {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 0 25px #00ffcc;
+}
+
+.login-box h1 {
+  color: #00ffcc;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  background: #222;
+  color: white;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: #00ffcc;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.message {
+  color: white;   /* Make the message text visible */
+  margin-top: 10px;
+  font-weight: bold;
+}
