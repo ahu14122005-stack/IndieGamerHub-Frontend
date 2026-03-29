@@ -117,7 +117,7 @@ function GameDetails({ dark }) {
             fontWeight: "bold",
           }}
         >
-          {favorite ? "❤️ Favorited" : "♡ Add to Favorites"}
+          {favorite ? "❤️ Added to Favorites" : "🤍 Add to Favorites"}
         </button>
 
         <p style={{ maxWidth: "800px", textAlign: "center", marginBottom: "20px" }}>
@@ -137,7 +137,7 @@ function GameDetails({ dark }) {
             rel="noopener noreferrer"
             style={{ color: "#04924b", fontWeight: "bold", fontSize: "16px" }}
           >
-            {game.trailer ? "Watch Trailer" : "Trailer not available — Search on YouTube"}
+            {game.trailer ? "🔍 Search Trailer on YouTube" : "Trailer not available — Search on YouTube"}
           </a>
         </div>
 
@@ -177,7 +177,7 @@ function GameDetails({ dark }) {
         >
           <input
             type="text"
-            placeholder="Write your comment..."
+            placeholder="Share your thoughts about this game..."
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             style={{

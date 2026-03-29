@@ -22,7 +22,7 @@ function GameList({ dark, setDark }) {
       style={{
         background: "linear-gradient(-45deg, #bb3c15, #e73c7e, #23a6d5, #40c5a6)",
         backgroundSize: "400% 400%",
-        animation: "gradientBG 2s ease infinite",
+        animation: "gradientBG 1s ease infinite",
         minHeight: "100vh",
         padding: "20px",
       }}
@@ -37,7 +37,10 @@ function GameList({ dark, setDark }) {
           borderRadius: "8px",
         }}
       >
-        <h1 style={{ margin: 0 }}>IndieGamer Hub</h1>
+        <h1 style={{ margin: 0 }}>🎮IndieGamer Hub</h1>
+        <h2 style={{ marginTop: "10px", color: dark ? "#00ffcc" : "#333" }}>
+  Welcome to IndieGamer Hub 🎮
+</h2>
         <div
           style={{
             display: "flex",
@@ -114,7 +117,11 @@ function GameList({ dark, setDark }) {
           </div>
         ))}
       </div>
+      <footer style={{ textAlign: "center", marginTop: "30px" }}>
+  <p>© 2026 IndieGamer Hub | Built with React 🚀</p>
+</footer>
     </div>
+    
   );
 }
 
